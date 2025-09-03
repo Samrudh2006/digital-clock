@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Clock</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    h1 {
+      color: cyan;
+      font-size: 40px;
+      margin-bottom: 40px;
+    }
+
+    #clock {
+      font-size: 60px;
+      font-weight: bold;
+      color: lime;
+      display: inline-block;
+      padding: 10px 20px;
+      border: 3px solid gray;
+      font-family: "Courier New", monospace;
+    }
+
+    #date {
+      font-size: 30px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Digital Clock</h1>
+  <div id="clock"></div>
+  <div id="date"></div>
+
+  <script>
+    function updateClock() {
+      let now = new Date();
+
+      // Built-in formatted time with AM/PM
+      let timeStr = now.toLocaleTimeString("en-US", { hour12: true });
+      document.getElementById("clock").innerText = timeStr;
+
+      // Built-in formatted date: Tuesday, 02 September 2025
+      let dateStr = now.toLocaleDateString("en-US", { 
+        weekday: "long", day: "2-digit", month: "long", year: "numeric" 
+      });
+      document.getElementById("date").innerText = dateStr;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
